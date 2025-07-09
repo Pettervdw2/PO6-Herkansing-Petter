@@ -186,9 +186,13 @@ if ($isAdmin && isset($_POST['delete_motor_id'])) {
         </div>
     </nav>
     <div class="container mt-4">
-        <h1 class="mb-4"></h1>
+        <div class="alert alert-info">Welkom bij MotoSports! Bekijk het aanbod, voeg motors toe aan je winkelmandje en bestel eenvoudig online.</div>
+        <?php if ($isAdmin): ?>
+            <div class="alert alert-warning mb-3">Als admin kun je motors toevoegen, bewerken en verwijderen.</div>
+        <?php endif; ?>
         <section id="motors">
             <h2>Motors</h2>
+            <p class="text-muted">Klik op 'Toevoegen aan winkelmandje' om een motor in je winkelmandje te plaatsen. Klik op 'Bekijk meer' voor details en reviews.</p>
             <form class="row g-3 align-items-end mb-4" method="get">
                 <div class="col-md-4">
                     <label for="search" class="form-label">Zoek op naam</label>
@@ -243,6 +247,7 @@ if ($isAdmin && isset($_POST['delete_motor_id'])) {
         <div class="card mb-4 mt-5">
             <div class="card-body">
                 <h5 class="card-title mb-3">Nieuwe motor toevoegen</h5>
+                <p class="text-muted">Vul alle velden in en voeg een afbeelding toe om een nieuwe motor aan het aanbod toe te voegen.</p>
                 <?php if ($addSuccess): ?><div class="alert alert-success">Motor toegevoegd!</div><?php endif; ?>
                 <?php if ($addError): ?><div class="alert alert-danger"><?= htmlspecialchars($addError) ?></div><?php endif; ?>
                 <form method="post" enctype="multipart/form-data">
@@ -279,6 +284,7 @@ if ($isAdmin && isset($_POST['delete_motor_id'])) {
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+            <div class="alert alert-info">Hier zie je de motors die je wilt bestellen. Je kunt motors verwijderen of direct bestellen.</div>
             <div id="cart-items" class="row g-3"></div>
             <div id="cart-empty" class="text-center text-muted">Je winkelmandje is leeg.</div>
             <div id="cart-total-row" class="mt-4 d-none">
